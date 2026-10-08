@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nicknames of South America</title>
+
+    <!-- Google Fonts: Playfair Display for editorial headers, Plus Jakarta Sans for UI text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- PyScript Files -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <style>
+        :root {
+            /* South American Deep Forest & Warm Accent Theme */
+            --bg-dark: #de5841;       /* Rich deep green background */
+            --bg-darker: #01c44f;     /* Darker shade for footer/borders */
+            --card-bg: #ffffff;       /* Clean crisp white for the inner card */
+            --text-main: #1b3b2b;     /* Deep green text color */
+            --accent-gold: #ffab02;   /* Elegant muted gold */
+            --text-light: #f4eee1;    /* Cream/sand text for dark backgrounds */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 2rem 1rem;
+        }
+
+        /* Subtle geometric pattern overlay reminiscent of the sample design */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header, .main-content, footer {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Top sub-heading tag */
+        .top-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Main Headline */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--accent-gold);
+        }
+
+        /* Subtitle description */
+        .description {
+            font-size: 0.95rem;
+            color: #d1dbc9;
+            max-width: 550px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.5;
+        }
+
+        /* Floating Interactive Card with Corner Brackets */
+        .lookup-card {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            /* Corner decorative brackets matching the sample */
+            border: 1px solid rgba(197, 168, 109, 0.3);
+        }
+
+        .lookup-card::before, .lookup-card::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-color: var(--accent-gold);
+            border-style: solid;
+            pointer-events: none;
+        }
+
+        .lookup-card::before {
+            top: -6px;
+            left: -6px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .lookup-card::after {
+            bottom: -6px;
+            right: -6px;
+            border-width: 0 2px 2px 0;
+        }
+
+        .card-label-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #777;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .lookup-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+        }
+
+        /* Form elements */
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background-color: #faf9f6;
+            border: none;
+            border-bottom: 2px solid #2c3e35;
+            outline: none;
+            border-radius: 2px 2px 0 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:focus {
+            background-color: #fff;
+            border-bottom-color: var(--accent-gold);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            border: none;
+            padding: 0.9rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            background-color: #274f3a;
+        }
+
+        button:active {
+            transform: scale(0.99);
+        }
+
+        /* Result container styling */
+        #result {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            border-top: 1px solid #eae5db;
+            padding-top: 1rem;
+            min-height: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.75rem;
+            color: #a3b8ad;
+            letter-spacing: 0.5px;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-tag">12 Nations &bull; One Continent of Names</div>
+        <h1>The <span>Nicknames</span><br>of South America</h1>
+        <p class="description">Every nation in this region carries a name earned through geography, history, and myth. Select a country below to uncover the title it has been given.</p>
+    </header>
+
+    <main class="main-content">
+        <div class="lookup-card">
+            <div class="card-label-type">Country Lookup</div>
+            <h2>Select a South American country</h2>
+
+            <div class="input-group">
+                <select id="country">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Peru">Peru</option>
+                </select>
+            </div>
+
+            <button py-click="show_name">Reveal Nickname</button>
+
+            <p id="result"></p>
+        </div>
+    </main>
+
+    <footer>
+        Seatwork 1 &bull; South American Nations Nicknames &bull; 10 RUBY
+    </footer>
+
+    <!-- PyScript execution script link -->
+    <script type="py" src="main.py"></script>
+
+</body>
+</html>
